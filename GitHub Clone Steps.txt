@@ -12,10 +12,17 @@
 9. git add . (go to the local clone folder, . add all files)
 9.1 git add <filename1 filename2 filename3>  (this is alternative method to add only specific files that you want)
 10. git commit -m "put your wanted message"
-11. git push -u origin master 
+11. git push -u origin master  
+ 11.1 (If need to push to branch) git push origin my-new-branch
 
 
 # Steps to download files from GitHub:
 1. Go to the right folder in local computer
 2. right click and 'get Bash from here'
 3. git pull
+
+
+git checkout -b branch_name (create a new bracnch name)
+git branch (check out current branch)
+git checkout master (go to master)
+git checkout branch_name  (go to branch_name)
