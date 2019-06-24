@@ -1,0 +1,80 @@
+Sub Stock()
+
+Dim i As Long  ' Long not Integer, as row number has over Integer limit
+Dim j As Integer
+Dim lastrow As Long
+
+For Each ws In Worksheets
+
+    ws.Cells(1, 9).Value = "Stiker"
+    ws.Cells(1, 10).Value = "Total Volume"
+    lastrow = ws.Cells(Rows.Count, 1).End(xlUp).Row
+    j = 2
+    ws.Cells(2, 10).Value = 0
+    
+    For i = 2 To lastrow
+        If ws.Cells(i, 1).Value <> ws.Cells(i + 1, 1) Then
+        ws.Cells(j, 9).Value = ws.Cells(i, 1).Value
+        ws.Cells(j, 10).Value = ws.Cells(j, 10).Value + ws.Cells(i, 7).Value
+        j = j + 1
+        Else
+        ws.Cells(j, 10).Value = ws.Cells(j, 10).Value + ws.Cells(i, 7).Value
+        End If
+        
+    Next i
+    
+Next ws
+    
+End Sub
+
+
+
+
+Sub StockVolumn2015()
+' 1st code section: add up volume
+Dim Arr(761000) As String
+Dim i As Long
+Dim j As Long
+Arr(0) = Cells(2, 1).Value
+j = 0
+For i = 2 To 761000
+If Cells(i + 1, 1).Value = Arr(j) Then
+Else
+Arr(j + 1) = Cells(i + 1, 1).Value
+j = j + 1
+End If
+Next i
+
+Dim n As Long
+Dim k As Long
+k = 0
+For n = 2 To 761000
+Cells(n, 12).Value = Arr(k)
+k = k + 1
+ If Cells(n, 12) = void Then  ' [if] and [exit for] to simple the code run
+ Exit For
+ End If
+Next n
+
+' 2nd code section: add up volume
+Dim x As Long
+Dim y As Long
+Dim z As Long
+y = 2
+For z = 1 To 761000
+ For x = 2 To 761000
+  If Cells(x, 1).Value = Cells(y, 12).Value Then
+  Cells(y, 13).Value = Cells(y, 13).Value + Cells(x, 2).Value
+  End If
+ Next x
+y = y + 1         ' change y value
+ 
+' use [void] check to simplify code
+If Cells(y, 12).Value = void Then
+Exit For
+End If
+Next z
+
+End Sub
+
+
