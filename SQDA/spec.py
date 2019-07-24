@@ -1,0 +1,9 @@
+Xbar_UCL=19.93
+Xbar_LCL=9.97
+Xbar_Mean=14.95
+R_UCL=15.74
+R_LCL=0
+R_Mean=7.27
+USL=25
+LSL=5
+SIZE=5
